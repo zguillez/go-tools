@@ -10,9 +10,9 @@
     "url": "https://github.com/zguillez"
   },
   "scripts": {
-    "go:init": "go mod init zguillez/go-tools",
-    "go:dependencies": "go mod tidy",
-    "go:run": "go run .",
+    "go:init": "cd go-tools && go mod init zguillez/go-tools",
+    "go:dependencies": "cd go-tools && go mod tidy",
+    "go:run": "cd go-tools && go run .",
     "clean": "npm run clean:zip && npm run clean:ds && npm run clean:txt && npm run clean:csv && npm run clean:tsv && npm run clean:log && npm run clean:sql && npm run clean:xml",
     "clean:csv": "find ./ -name '*.csv' -exec rm -f {} \\;",
     "clean:ds": "find ./ -name '.DS_Store' -exec rm -f {} \\;",
@@ -27,6 +27,6 @@
     "version:minor": "go run . -c version -l minor",
     "version:major": "go run . -c version -l major",
     "deploy": "npm run version && npm run deploy:lite",
-    "deploy:lite": "cd pkg && go build . && go install ."
+    "deploy:lite": "cd go-tools && go build . && go install ."
   }
 }
