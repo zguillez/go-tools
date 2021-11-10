@@ -2,11 +2,11 @@ package main
 
 import (
 	"github.com/fatih/color"
-	"zguillez/go-tools/core"
-	"zguillez/go-tools/files"
-	"zguillez/go-tools/geometry"
-	"zguillez/go-tools/image"
-	"zguillez/go-tools/text"
+	"github.com/zguillez/go-tools/core"
+	"github.com/zguillez/go-tools/files"
+	"github.com/zguillez/go-tools/geometry"
+	"github.com/zguillez/go-tools/image"
+	"github.com/zguillez/go-tools/text"
 )
 
 func main() {
