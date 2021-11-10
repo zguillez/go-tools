@@ -33,8 +33,6 @@ func main() {
 			files.ReadFile(*input)
 		case "minimize":
 			image.Minimize(*input, *output, *level)
-		case "json":
-			core.Package()
 		case "version":
 			core.Version(*level)
 		default:
