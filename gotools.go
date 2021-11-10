@@ -1,12 +1,12 @@
-package gotools
+package main
 
 import (
 	"github.com/fatih/color"
-	"zguillez.io/gotools/core"
-	"zguillez.io/gotools/files"
-	"zguillez.io/gotools/geometry"
-	"zguillez.io/gotools/image"
-	"zguillez.io/gotools/text"
+	"zguillez/go-tools/core"
+	"zguillez/go-tools/files"
+	"zguillez/go-tools/geometry"
+	"zguillez/go-tools/image"
+	"zguillez/go-tools/text"
 )
 
 func main() {
@@ -43,4 +43,8 @@ func main() {
 		color.Red("[error: tool -c command empty]")
 	}
 
+}
+
+func Test() string {
+	return "ok"
 }

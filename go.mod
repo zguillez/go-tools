@@ -1,4 +1,4 @@
-module zguillez.io/gotools
+module zguillez/go-tools
 
 go 1.17
 

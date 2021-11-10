@@ -6,7 +6,7 @@ import (
 
 	"github.com/fatih/color"
 
-	"zguillez.io/gotools/system"
+	"zguillez/go-tools/system"
 )
 
 type PackageJson struct {

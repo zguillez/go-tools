@@ -10,7 +10,7 @@ import (
 
 	"github.com/fatih/color"
 
-	"zguillez.io/gotools/system"
+	"zguillez/go-tools/system"
 )
 
 func Load(filepath string) image.Image {

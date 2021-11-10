@@ -7,7 +7,7 @@ import (
 	"github.com/fatih/color"
 	_ "github.com/go-sql-driver/mysql"
 
-	"zguillez.io/gotools/system"
+	"zguillez/go-tools/system"
 )
 
 const ECHOSQL = "[sql] %v"

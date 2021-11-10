@@ -1,8 +1,8 @@
 {
-  "name": "gotools",
-  "version": "0.1.17",
+  "name": "go-tools",
+  "version": "0.1.18",
   "description": "golang tools",
-  "repository": "https://zguillez.io/gotools.git",
+  "repository": "https://zguillez/go-tools.git",
   "license": "MIT",
   "author": {
     "name": "Guillermo de la Iglesia",

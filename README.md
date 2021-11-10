@@ -5,7 +5,7 @@ Golang helpers
 ## Install
 
 ```
-go get -v zguillez.io/gotools
+go get -v zguillez/go-tools
 ```
 
 ## Usage
