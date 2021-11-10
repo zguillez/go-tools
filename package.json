@@ -1,16 +1,16 @@
 {
-  "name": "go-tools",
-  "version": "0.1.15",
+  "name": "gotools",
+  "version": "0.1.17",
   "description": "golang tools",
-  "repository": "https://github.com/zguillez/go-tools.git",
+  "repository": "https://zguillez.io/gotools.git",
   "license": "MIT",
   "author": {
     "name": "Guillermo de la Iglesia",
     "email": "mail@zguillez.io",
-    "url": "https://github.com/zguillez"
+    "url": "https://zguillez.io"
   },
   "scripts": {
-    "go:init": "go mod init zguillez/go-tools",
+    "go:init": "go mod init zguillez/gotools",
     "go:dependencies": "go mod tidy",
     "clean": "npm run clean:zip && npm run clean:ds && npm run clean:txt && npm run clean:csv && npm run clean:tsv && npm run clean:log && npm run clean:sql && npm run clean:xml",
     "clean:csv": "find ./ -name '*.csv' -exec rm -f {} \\;",
@@ -22,9 +22,9 @@
     "clean:xml": "find . -path ./.idea -prune -o -name '*.xml' -print -exec rm -f {} \\;",
     "clean:zip": "rm -f *.zip",
     "version": "npm run version:patch",
-    "version:patch": "go-tools -c version -l patch",
-    "version:minor": "go-tools -c version -l minor",
-    "version:major": "go-tools -c version -l major",
+    "version:patch": "gotools -c version -l patch",
+    "version:minor": "gotools -c version -l minor",
+    "version:major": "gotools -c version -l major",
     "deploy": "npm run version && npm run deploy:lite && z git update",
     "deploy:lite": "go build . && go install ."
   }

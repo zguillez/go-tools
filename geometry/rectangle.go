@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/zguillez/go-tools/system"
+	"zguillez.io/gotools/system"
 )
 
 func Rectangle() {

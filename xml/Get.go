@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/zguillez/go-tools/system"
+	"zguillez.io/gotools/system"
 )
 
 func Get(url string) []byte {

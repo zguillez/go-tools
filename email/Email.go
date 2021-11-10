@@ -6,7 +6,7 @@ import (
 
 	"github.com/fatih/color"
 
-	"github.com/zguillez/go-tools/system"
+	"zguillez.io/gotools/system"
 )
 
 func Email(emails []string, subject string, text string, from string, password string, verbose bool) {

@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/zguillez/go-tools/system"
+	"zguillez.io/gotools/system"
 )
 
 func Replace(input string, search string, replace string, count int) string {

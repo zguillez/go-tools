@@ -1,17 +1,17 @@
-# go-tools
+# gotools
 
 Golang helpers
 
 ## Install
 
 ```
-go get -v github.com/zguillez/go-tools
+go get -v zguillez.io/gotools
 ```
 
 ## Usage
 
 ```
-go-tools --help
+gotools --help
 ```
 
 # Contributing and issues
