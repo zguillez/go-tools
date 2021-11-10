@@ -9,10 +9,7 @@ import (
 	"github.com/zguillez/go-tools/system"
 )
 
-func Email(to []string, subject string, text string, verbose bool) {
-	from := "api.zguillez.io@gmail.com"
-	// password := "apizguillez2016"
-	password := "kevnihpjqokaylln"
+func Email(to []string, subject string, text string, from string, password string, verbose bool) {
 	smtpServer := smtpServer{host: "smtp.gmail.com", port: "587"}
 
 	_from := fmt.Sprintf("From: %v", from)

@@ -10,6 +10,8 @@ import (
 	"github.com/zguillez/go-tools/system"
 )
 
+const ECHOSQL = "[sql] %v"
+
 func MySQL(host, user, password, database string, verbose bool) *sql.DB {
 
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s", user, password, host, database)
@@ -47,13 +49,13 @@ func Query(db *sql.DB, sql string) (*sql.Rows, []string) {
 }
 
 func Queryf(db *sql.DB, sql string, args []string, verbose bool) (*sql.Rows, []string) {
-	args_ := make([]interface{}, len(args))
+	argx := make([]interface{}, len(args))
 	for i, v := range args {
-		args_[i] = v
+		argx[i] = v
 	}
-	sql_ := fmt.Sprintf(fmt.Sprintf(sql, args_...))
+	sql_ := fmt.Sprintf(fmt.Sprintf(sql, argx...))
 	if verbose {
-		color.Yellow("[sql] %v", sql_)
+		color.Yellow(ECHOSQL, sql_)
 	}
 	rows, err := db.Query(sql_)
 	system.CheckError(err)
@@ -110,7 +112,7 @@ func Selectf(db *sql.DB, sql string, args []string, verbose bool) []map[string]s
 func Insert(db *sql.DB, sql string, verbose bool) int {
 	rows, err := db.Exec(sql)
 	if verbose {
-		color.Yellow("[sql] %v", sql)
+		color.Yellow(ECHOSQL, sql)
 	}
 	system.CheckError(err)
 
@@ -121,14 +123,14 @@ func Insert(db *sql.DB, sql string, verbose bool) int {
 }
 
 func Insertf(db *sql.DB, sql string, args []string, verbose bool) int {
-	args_ := make([]interface{}, len(args))
+	argx := make([]interface{}, len(args))
 	for i, v := range args {
-		args_[i] = v
+		argx[i] = v
 	}
-	sql_ := fmt.Sprintf(fmt.Sprintf(sql, args_...))
+	sql_ := fmt.Sprintf(fmt.Sprintf(sql, argx...))
 	rows, err := db.Exec(sql_)
 	if verbose {
-		color.Yellow("[sql] %v", sql_)
+		color.Yellow(ECHOSQL, sql_)
 	}
 	system.CheckError(err)
 
