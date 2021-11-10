@@ -53,11 +53,11 @@ func Queryf(db *sql.DB, sql string, args []string, verbose bool) (*sql.Rows, []s
 	for i, v := range args {
 		argx[i] = v
 	}
-	sql_ := fmt.Sprintf(fmt.Sprintf(sql, argx...))
+	sqlx := fmt.Sprintf(fmt.Sprintf(sql, argx...))
 	if verbose {
-		color.Yellow(ECHOSQL, sql_)
+		color.Yellow(ECHOSQL, sqlx)
 	}
-	rows, err := db.Query(sql_)
+	rows, err := db.Query(sqlx)
 	system.CheckError(err)
 
 	cols, err := rows.Columns()
@@ -127,10 +127,10 @@ func Insertf(db *sql.DB, sql string, args []string, verbose bool) int {
 	for i, v := range args {
 		argx[i] = v
 	}
-	sql_ := fmt.Sprintf(fmt.Sprintf(sql, argx...))
-	rows, err := db.Exec(sql_)
+	sqlx := fmt.Sprintf(fmt.Sprintf(sql, argx...))
+	rows, err := db.Exec(sqlx)
 	if verbose {
-		color.Yellow(ECHOSQL, sql_)
+		color.Yellow(ECHOSQL, sqlx)
 	}
 	system.CheckError(err)
 

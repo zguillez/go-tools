@@ -9,30 +9,30 @@ import (
 	"github.com/zguillez/go-tools/system"
 )
 
-func Email(to []string, subject string, text string, from string, password string, verbose bool) {
+func Email(emails []string, subject string, text string, from string, password string, verbose bool) {
 	smtpServer := smtpServer{host: "smtp.gmail.com", port: "587"}
 
-	_from := fmt.Sprintf("From: %v", from)
-	to_ := ""
+	from = fmt.Sprintf("From: %v", from)
+	to := ""
 	for i := range to {
 		if i == 0 {
-			to_ = fmt.Sprintf("%v", to[i])
+			to = fmt.Sprintf("%v", emails[i])
 		} else {
-			to_ = fmt.Sprintf("%v,%v", to_, to[i])
+			to = fmt.Sprintf("%v,%v", to, emails[i])
 		}
 	}
-	_to := fmt.Sprintf("To: %v", to_)
+	to = fmt.Sprintf("To: %v", to)
 	_subject := fmt.Sprintf("Subject: %v", subject)
 
 	if verbose {
-		color.Yellow("[email] [to] %v", to_)
+		color.Yellow("[email] [to] %v", to)
 		color.Yellow("[email] [subject] %v", subject)
 		color.Cyan("[email] [message] %v", text)
 	}
 
-	message := []byte(fmt.Sprintf("%v\n%v\n%v\n\n%v", _from, _to, _subject, text))
+	message := []byte(fmt.Sprintf("%v\n%v\n%v\n\n%v", from, to, _subject, text))
 	auth := smtp.PlainAuth("", from, password, smtpServer.host)
-	err := smtp.SendMail(smtpServer.Address(), auth, from, to, message)
+	err := smtp.SendMail(smtpServer.Address(), auth, from, emails, message)
 	system.CheckError(err)
 	if verbose {
 		color.Green("[email] sended")
