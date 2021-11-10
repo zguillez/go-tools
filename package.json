@@ -1,8 +1,8 @@
 {
   "name": "go-tools",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "golang tools",
-  "repository": "https://zguillez/go-tools.git",
+  "repository": "https://github.com/zguillez/go-tools",
   "license": "MIT",
   "author": {
     "name": "Guillermo de la Iglesia",
@@ -10,7 +10,7 @@
     "url": "https://zguillez.io"
   },
   "scripts": {
-    "go:init": "go mod init zguillez/gotools",
+    "go:init": "go mod init github.com/zguillez/go-tools",
     "go:dependencies": "go mod tidy",
     "clean": "npm run clean:zip && npm run clean:ds && npm run clean:txt && npm run clean:csv && npm run clean:tsv && npm run clean:log && npm run clean:sql && npm run clean:xml",
     "clean:csv": "find ./ -name '*.csv' -exec rm -f {} \\;",
