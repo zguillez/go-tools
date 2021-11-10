@@ -22,7 +22,7 @@ func Email(emails []string, subject string, text string, from string, password s
 		}
 	}
 	to = fmt.Sprintf("To: %v", to)
-	_subject := fmt.Sprintf("Subject: %v", subject)
+	subject = fmt.Sprintf("Subject: %v", subject)
 
 	if verbose {
 		color.Yellow("[email] [to] %v", to)
@@ -30,7 +30,7 @@ func Email(emails []string, subject string, text string, from string, password s
 		color.Cyan("[email] [message] %v", text)
 	}
 
-	message := []byte(fmt.Sprintf("%v\n%v\n%v\n\n%v", from, to, _subject, text))
+	message := []byte(fmt.Sprintf("%v\n%v\n%v\n\n%v", from, to, subject, text))
 	auth := smtp.PlainAuth("", from, password, smtpServer.host)
 	err := smtp.SendMail(smtpServer.Address(), auth, from, emails, message)
 	system.CheckError(err)
