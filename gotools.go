@@ -1,4 +1,4 @@
-package main
+package gotools
 
 import (
 	"github.com/fatih/color"
@@ -45,6 +45,6 @@ func main() {
 
 }
 
-func Test() string {
-	return "ok"
+func Hello() string {
+	return "HELLO!!!!!"
 }
