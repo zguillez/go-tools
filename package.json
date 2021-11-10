@@ -27,6 +27,6 @@
     "version:minor": "go run . -c version -l minor",
     "version:major": "go run . -c version -l major",
     "deploy": "npm run version && npm run deploy:lite",
-    "deploy:lite": "go build . && go install ."
+    "deploy:lite": "cd pkg && go build . && go install ."
   }
 }
