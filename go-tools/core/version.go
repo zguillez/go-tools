@@ -43,12 +43,12 @@ func Version(level string) {
 		}
 		n, _ := strconv.Atoi(version[i])
 		version[i] = strconv.Itoa(n + 1)
-		version_ := strings.Join(version, ".")
+		versionActual := strings.Join(version, ".")
 
-		color.Cyan("%v update to: %v", level, version_)
+		color.Cyan("%v update to: %v", level, versionActual)
 
-		paqueteText_ := text.Replace(paqueteText, paquete.Version, version_, -1)
-		files.SaveFile("./package.json", paqueteText_)
+		paqueteTexto := text.Replace(paqueteText, paquete.Version, versionActual, -1)
+		files.SaveFile("./package.json", paqueteTexto)
 
 	} else {
 		color.Red("*** error *** Invalid version -l (minor|major|patch)")

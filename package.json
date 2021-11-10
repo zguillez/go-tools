@@ -1,6 +1,6 @@
 {
   "name": "go-tools",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "golang tools",
   "repository": "https://github.com/zguillez/go-tools.git",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "version:patch": "go-tools -c version -l patch",
     "version:minor": "go-tools -c version -l minor",
     "version:major": "go-tools -c version -l major",
-    "deploy": "npm run version && npm run deploy:lite",
+    "deploy": "npm run version && npm run deploy:lite && z git update",
     "deploy:lite": "cd go-tools && go build . && go install ."
   }
 }
