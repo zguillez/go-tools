@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"zguillez/go-tools/files"
-	"zguillez/go-tools/system"
+	"github.com/zguillez/go-tools/files"
+	"github.com/zguillez/go-tools/system"
 )
 
 func Matrix(path string) (data [][]string) {

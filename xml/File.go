@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/net/html/charset"
 
-	"zguillez/go-tools/system"
+	"github.com/zguillez/go-tools/system"
 )
 
 func Decoder(filePath string) *xml.Decoder {

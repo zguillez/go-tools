@@ -7,8 +7,8 @@ import (
 
 	"github.com/fatih/color"
 
-	"zguillez/go-tools/files"
-	"zguillez/go-tools/text"
+	"github.com/zguillez/go-tools/files"
+	"github.com/zguillez/go-tools/text"
 )
 
 func Version(level string) {
