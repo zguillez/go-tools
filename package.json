@@ -1,6 +1,6 @@
 {
   "name": "go-tools",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "golang tools",
   "repository": "https://github.com/zguillez/go-tools.git",
   "license": "MIT",
@@ -10,8 +10,8 @@
     "url": "https://github.com/zguillez"
   },
   "scripts": {
-    "go:init": "cd go-tools && go mod init zguillez/go-tools",
-    "go:dependencies": "cd go-tools && go mod tidy",
+    "go:init": "go mod init zguillez/go-tools",
+    "go:dependencies": "go mod tidy",
     "clean": "npm run clean:zip && npm run clean:ds && npm run clean:txt && npm run clean:csv && npm run clean:tsv && npm run clean:log && npm run clean:sql && npm run clean:xml",
     "clean:csv": "find ./ -name '*.csv' -exec rm -f {} \\;",
     "clean:ds": "find ./ -name '.DS_Store' -exec rm -f {} \\;",
@@ -26,6 +26,6 @@
     "version:minor": "go-tools -c version -l minor",
     "version:major": "go-tools -c version -l major",
     "deploy": "npm run version && npm run deploy:lite && z git update",
-    "deploy:lite": "cd go-tools && go build . && go install ."
+    "deploy:lite": "go build . && go install ."
   }
 }
