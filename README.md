@@ -1,19 +1,15 @@
-[![npm version](https://badge.fury.io/js/go-tools.svg)](https://badge.fury.io/js/go-tools)
-[![Build Status](https://travis-ci.org/zguillez/go-tools.svg?branch=master)](https://travis-ci.org/zguillez/go-tools)
-[![Installs](https://img.shields.io/npm/dt/go-tools.svg)](https://coveralls.io/r/zguillez/go-tools)
-[![Gitter](https://badges.gitter.im/zguillez/go-tools.svg)](https://gitter.im/zguillez/go-tools?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-> [Zguillez](https://zguillez.io) | Guillermo de la Iglesia
-
 # go-tools
 
 Golang helpers
 
 ## Install
+
 ```
 go get -v github.com/zguillez/go-tools
 ```
+
 ## Usage
+
 ```
 go-tools --help
 ```

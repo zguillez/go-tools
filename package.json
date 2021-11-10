@@ -1,6 +1,6 @@
 {
   "name": "go-tools",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "golang tools",
   "repository": "https://github.com/zguillez/go-tools.git",
   "license": "MIT",
@@ -12,7 +12,6 @@
   "scripts": {
     "go:init": "cd go-tools && go mod init zguillez/go-tools",
     "go:dependencies": "cd go-tools && go mod tidy",
-    "go:run": "cd go-tools && go run .",
     "clean": "npm run clean:zip && npm run clean:ds && npm run clean:txt && npm run clean:csv && npm run clean:tsv && npm run clean:log && npm run clean:sql && npm run clean:xml",
     "clean:csv": "find ./ -name '*.csv' -exec rm -f {} \\;",
     "clean:ds": "find ./ -name '.DS_Store' -exec rm -f {} \\;",
@@ -23,9 +22,9 @@
     "clean:xml": "find . -path ./.idea -prune -o -name '*.xml' -print -exec rm -f {} \\;",
     "clean:zip": "rm -f *.zip",
     "version": "npm run version:patch",
-    "version:patch": "go run . -c version -l patch",
-    "version:minor": "go run . -c version -l minor",
-    "version:major": "go run . -c version -l major",
+    "version:patch": "go-tools -c version -l patch",
+    "version:minor": "go-tools -c version -l minor",
+    "version:major": "go-tools -c version -l major",
     "deploy": "npm run version && npm run deploy:lite",
     "deploy:lite": "cd go-tools && go build . && go install ."
   }
