@@ -39,7 +39,21 @@ func Ping(db *sql.DB, verbose bool) error {
 	return err
 }
 
-func Query(db *sql.DB, sql string) (*sql.Rows, []string) {
+func Query(db *sql.DB, sql string, verbose bool) (*sql.Rows, []string) {
+	return queryHandler(db, sql, verbose)
+}
+func Queryf(db *sql.DB, sql string, args []string, verbose bool) (*sql.Rows, []string) {
+	argx := make([]interface{}, len(args))
+	for i, v := range args {
+		argx[i] = v
+	}
+	sql = fmt.Sprintf(fmt.Sprintf(sql, argx...))
+	return queryHandler(db, sql, verbose)
+}
+func queryHandler(db *sql.DB, sql string, verbose bool) (*sql.Rows, []string) {
+	if verbose {
+		color.Yellow(ECHOSQL, sql)
+	}
 	rows, err := db.Query(sql)
 	system.CheckError(err)
 
@@ -48,49 +62,15 @@ func Query(db *sql.DB, sql string) (*sql.Rows, []string) {
 	return rows, cols
 }
 
-func Queryf(db *sql.DB, sql string, args []string, verbose bool) (*sql.Rows, []string) {
-	argx := make([]interface{}, len(args))
-	for i, v := range args {
-		argx[i] = v
-	}
-	sqlx := fmt.Sprintf(fmt.Sprintf(sql, argx...))
-	if verbose {
-		color.Yellow(ECHOSQL, sqlx)
-	}
-	rows, err := db.Query(sqlx)
-	system.CheckError(err)
-
-	cols, err := rows.Columns()
-	system.CheckError(err)
-	return rows, cols
-}
-
 func Select(db *sql.DB, sql string, verbose bool) []map[string]string {
-
-	rows, cols := Query(db, sql)
-
-	var data []map[string]string
-	for rows.Next() {
-		item := make(map[string]string)
-		columns := make([]string, len(cols))
-		columnPointers := make([]interface{}, len(cols))
-		for i := range columns {
-			columnPointers[i] = &columns[i]
-		}
-		rows.Scan(columnPointers...)
-		for i, colName := range cols {
-			item[colName] = columns[i]
-		}
-		data = append(data, item)
-	}
-
-	return data
+	rows, cols := Query(db, sql, verbose)
+	return selectHandler(rows, cols)
 }
-
 func Selectf(db *sql.DB, sql string, args []string, verbose bool) []map[string]string {
-
 	rows, cols := Queryf(db, sql, args, verbose)
-
+	return selectHandler(rows, cols)
+}
+func selectHandler(rows *sql.Rows, cols []string) []map[string]string {
 	var data []map[string]string
 	for rows.Next() {
 		item := make(map[string]string)
@@ -105,7 +85,6 @@ func Selectf(db *sql.DB, sql string, args []string, verbose bool) []map[string]s
 		}
 		data = append(data, item)
 	}
-
 	return data
 }
 
@@ -127,10 +106,10 @@ func Insertf(db *sql.DB, sql string, args []string, verbose bool) int {
 	for i, v := range args {
 		argx[i] = v
 	}
-	sqlx := fmt.Sprintf(fmt.Sprintf(sql, argx...))
-	rows, err := db.Exec(sqlx)
+	sql = fmt.Sprintf(fmt.Sprintf(sql, argx...))
+	rows, err := db.Exec(sql)
 	if verbose {
-		color.Yellow(ECHOSQL, sqlx)
+		color.Yellow(ECHOSQL, sql)
 	}
 	system.CheckError(err)
 

@@ -1,6 +1,6 @@
 {
   "name": "go-tools",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "golang tools",
   "repository": "https://github.com/zguillez/go-tools.git",
   "license": "MIT",
