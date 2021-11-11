@@ -13,11 +13,13 @@ func Help() {
 	core.Help()
 }
 func Version() {
-	color.Green("v0.1.25")
+	color.Green("v0.1.26")
 }
 
-func Command(command string, args ...string) {
-	color.Yellow("[command: %v]", command)
+func Command(command string, verbose bool, args ...string) {
+	if verbose {
+		color.Yellow("[command: %v]", command)
+	}
 	switch command {
 	case "rectangle":
 		geometry.Rectangle()
@@ -30,6 +32,8 @@ func Command(command string, args ...string) {
 	case "version":
 		core.Version(args[0])
 	default:
-		color.Red("[error: command %v unknown]", command)
+		if verbose {
+			color.Red("[error: command %v unknown]", command)
+		}
 	}
 }
