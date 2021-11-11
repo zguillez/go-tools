@@ -1,6 +1,6 @@
 {
   "name": "go-tools",
-  "version": "0.1.21",
+  "version": "0.1.24",
   "description": "golang tools",
   "repository": "https://github.com/zguillez/go-tools",
   "license": "MIT",
@@ -22,10 +22,16 @@
     "clean:xml": "find . -path ./.idea -prune -o -name '*.xml' -print -exec rm -f {} \\;",
     "clean:zip": "rm -f *.zip",
     "version": "npm run version:patch",
-    "version:patch": "gotools -c version -l patch",
-    "version:minor": "gotools -c version -l minor",
-    "version:major": "gotools -c version -l major",
-    "deploy": "npm run version && npm run deploy:lite && z git update",
-    "deploy:lite": "go build . && go install ."
+    "version:patch": "./bin/version",
+    "version:minor": "./bin/version --minor",
+    "version:major": "./bin/version --major",
+    "deploy": "npm run clean && npm run version && npm run deploy:git && npm run deploy:pkg",
+    "deploy:git": "z git push -b main -m v0.1.24 -v 0.1.24",
+    "deploy:pkg": "GOPROXY=proxy.golang.org go list -m github.com/zguillez/go-tools@v0.1.24"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "minimist": "^1.2.5",
+    "replace": "^1.2.1"
   }
 }
