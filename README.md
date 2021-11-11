@@ -2,16 +2,17 @@
 
 Golang helpers
 
-## Install
-
-```
-go get -v zguillez/go-tools
-```
-
 ## Usage
 
 ```
-gotools --help
+import (
+	gotools "github.com/zguillez/go-tools"
+	"github.com/zguillez/go-tools/core"
+)
+```
+```
+gotools.Help()
+core.Help()
 ```
 
 # Contributing and issues
