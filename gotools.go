@@ -13,7 +13,7 @@ func Help() {
 	core.Help()
 }
 func Version() {
-	color.Green("v0.1.27")
+	color.Green("v0.1.28")
 }
 
 func Command(command string, verbose bool, args ...string) {

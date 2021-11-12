@@ -19,6 +19,6 @@ func Between(init time.Time) time.Time {
 func End(init time.Time, verbose bool) {
 	end := Between(init)
 	if verbose {
-		color.Green("[END:%v]", end.Format("15:04:05"))
+		color.Magenta("[complete: %v]", end.Format("15:04:05"))
 	}
 }
