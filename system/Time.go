@@ -9,6 +9,9 @@ import (
 func Now() time.Time {
 	return time.Now()
 }
+func Nowf() string {
+	return Now().Format("2006-01-02 15:04:05")
+}
 
 func Between(init time.Time) time.Time {
 	end := time.Now()
