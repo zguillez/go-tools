@@ -6,6 +6,7 @@ import (
 	"github.com/zguillez/go-tools/files"
 	"github.com/zguillez/go-tools/geometry"
 	"github.com/zguillez/go-tools/image"
+	"github.com/zguillez/go-tools/system"
 	"github.com/zguillez/go-tools/text"
 )
 
@@ -13,13 +14,11 @@ func Help() {
 	core.Help()
 }
 func Version() {
-	color.Green("v0.1.29")
+	color.Green("v0.1.30")
 }
 
 func Command(command string, verbose bool, args ...string) {
-	if verbose {
-		color.Yellow("[command: %v]", command)
-	}
+	system.Echo(verbose, color.Yellow, "[command: %v]", command)
 	switch command {
 	case "rectangle":
 		geometry.Rectangle()
@@ -32,8 +31,6 @@ func Command(command string, verbose bool, args ...string) {
 	case "version":
 		core.Version(args[0])
 	default:
-		if verbose {
-			color.Red("[error: command %v unknown]", command)
-		}
+		system.Echo(verbose, color.Red, "[error: command %v unknown]", command)
 	}
 }

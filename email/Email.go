@@ -34,9 +34,7 @@ func Email(emails []string, subject string, text string, from string, password s
 	auth := smtp.PlainAuth("", from, password, smtpServer.host)
 	err := smtp.SendMail(smtpServer.Address(), auth, from, emails, message)
 	system.CheckError(err)
-	if verbose {
-		color.Green("[email] sended")
-	}
+	system.Echo(verbose, color.Green, "[email] sended")
 }
 
 type smtpServer struct {

@@ -19,9 +19,17 @@ func Between(init time.Time) time.Time {
 	return time.Time{}.Add(diff)
 }
 
-func End(init time.Time, verbose bool) {
-	end := Between(init)
+func End(init time.Time, verbose bool) string {
+	end := Between(init).Format("15:04:05")
 	if verbose {
-		color.Magenta("[complete: %v]", end.Format("15:04:05"))
+		color.Magenta("[complete: %v]", end)
 	}
+	return end
+}
+func Duration(init time.Time, verbose bool) int64 {
+	duration := init.Unix() - time.Now().Unix()
+	if verbose {
+		color.Magenta("[duration: %v]", duration)
+	}
+	return duration
 }

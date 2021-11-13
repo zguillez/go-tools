@@ -17,25 +17,19 @@ func MySQL(host, user, password, database string, verbose bool) *sql.DB {
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s", user, password, host, database)
 	db, err := sql.Open("mysql", dataSourceName)
 	system.CheckError(err)
-	if verbose {
-		color.Green("*** database connected ***")
-		color.Green(fmt.Sprintf("*** [%s:%s]", host, database))
-	}
+	system.Echo(verbose, color.Green, "*** database connected ***")
+	system.Echo(verbose, color.Green, "*** [%s:%s]", host, database)
 	return db
 }
 
 func Close(db *sql.DB, verbose bool) {
 	db.Close()
-	if verbose {
-		color.Yellow("*** database closed ***")
-	}
+	system.Echo(verbose, color.Yellow, "*** database closed ***")
 }
 
 func Ping(db *sql.DB, verbose bool) error {
 	err := db.Ping()
-	if verbose {
-		color.Yellow("*** database ping ***")
-	}
+	system.Echo(verbose, color.Yellow, "*** database ping ***")
 	return err
 }
 
@@ -51,9 +45,7 @@ func Queryf(db *sql.DB, sql string, args []string, verbose bool) (*sql.Rows, []s
 	return queryHandler(db, sql, verbose)
 }
 func queryHandler(db *sql.DB, sql string, verbose bool) (*sql.Rows, []string) {
-	if verbose {
-		color.Yellow(ECHOSQL, sql)
-	}
+	system.Echo(verbose, color.Yellow, ECHOSQL, sql)
 	rows, err := db.Query(sql)
 	system.CheckError(err)
 
@@ -90,9 +82,7 @@ func selectHandler(rows *sql.Rows, cols []string) []map[string]string {
 
 func Insert(db *sql.DB, sql string, verbose bool) int {
 	rows, err := db.Exec(sql)
-	if verbose {
-		color.Yellow(ECHOSQL, sql)
-	}
+	system.Echo(verbose, color.Yellow, ECHOSQL, sql)
 	system.CheckError(err)
 
 	id, err := rows.LastInsertId()
@@ -108,9 +98,7 @@ func Insertf(db *sql.DB, sql string, args []string, verbose bool) int {
 	}
 	sql = fmt.Sprintf(fmt.Sprintf(sql, argx...))
 	rows, err := db.Exec(sql)
-	if verbose {
-		color.Yellow(ECHOSQL, sql)
-	}
+	system.Echo(verbose, color.Yellow, ECHOSQL, sql)
 	system.CheckError(err)
 
 	id, err := rows.LastInsertId()
