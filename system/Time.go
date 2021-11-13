@@ -27,7 +27,7 @@ func End(init time.Time, verbose bool) string {
 	return end
 }
 func Duration(init time.Time, verbose bool) int64 {
-	duration := init.Unix() - time.Now().Unix()
+	duration := time.Now().Unix() - init.Unix()
 	if verbose {
 		color.Magenta("[duration: %v]", duration)
 	}
