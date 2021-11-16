@@ -15,7 +15,7 @@ func Email(emails []string, subject string, text string) {
 
 	from := fmt.Sprintf("From: %v", core.EmailFROM)
 	to := ""
-	for i := range to {
+	for i := range emails {
 		if i == 0 {
 			to = fmt.Sprintf("%v", emails[i])
 		} else {
