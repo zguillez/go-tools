@@ -5,14 +5,15 @@ import (
 	"net/smtp"
 
 	"github.com/fatih/color"
+	"github.com/zguillez/go-tools/core"
 
 	"github.com/zguillez/go-tools/system"
 )
 
-func Email(emails []string, subject string, text string, from string, password string, verbose bool) {
-	smtpServer := smtpServer{host: "smtp.gmail.com", port: "587"}
+func Email(emails []string, subject string, text string) {
+	smtpServer := smtpServer{host: core.EmailSMTP, port: core.EmailPORT}
 
-	from = fmt.Sprintf("From: %v", from)
+	from := fmt.Sprintf("From: %v", core.EmailFROM)
 	to := ""
 	for i := range to {
 		if i == 0 {
@@ -24,17 +25,17 @@ func Email(emails []string, subject string, text string, from string, password s
 	to = fmt.Sprintf("To: %v", to)
 	subject = fmt.Sprintf("Subject: %v", subject)
 
-	if verbose {
+	if core.Verbose {
 		color.Yellow("[email] [to] %v", to)
 		color.Yellow("[email] [subject] %v", subject)
 		color.Cyan("[email] [message] %v", text)
 	}
 
 	message := []byte(fmt.Sprintf("%v\n%v\n%v\n\n%v", from, to, subject, text))
-	auth := smtp.PlainAuth("", from, password, smtpServer.host)
+	auth := smtp.PlainAuth("", from, core.EmailPASS, smtpServer.host)
 	err := smtp.SendMail(smtpServer.Address(), auth, from, emails, message)
 	system.CheckError(err)
-	system.Echo(verbose, color.Green, "[email] sended")
+	system.Echo(core.Verbose, color.Green, "[email] sended")
 }
 
 type smtpServer struct {
